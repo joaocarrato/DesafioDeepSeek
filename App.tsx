@@ -1,18 +1,20 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
 
 import {ThemeProvider} from '@shopify/restyle';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {Text} from '@components';
+import {Screen, Text} from '@components';
 import {theme} from '@theme';
 
 function App(): React.JSX.Element {
   return (
-    <ThemeProvider theme={theme}>
-      <SafeAreaView style={{paddingHorizontal: 24, paddingTop: 24}}>
-        <Text>Olá</Text>
-      </SafeAreaView>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <Screen>
+          <Text>Olá</Text>
+        </Screen>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 
