@@ -4,20 +4,23 @@ if (__DEV__) {
 import React from 'react';
 
 import {ThemeProvider} from '@shopify/restyle';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {Screen, Text} from '@components';
+import {HomeScreen} from '@screens';
 import {theme} from '@theme';
+
+const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <Screen>
-          <Text>Olá</Text>
-        </Screen>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <HomeScreen />
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 }
 
